@@ -27,8 +27,9 @@ class TestBadFiles {
 
 	@Test
 	void testAverage3() {
-		// TODO: make a testcase that YOU know the correct answer to, but the
+		// Done: make a testcase that YOU know the correct answer to, but the
 		// function returns an incorrect result
+		assertEquals(2.5 , BadFunctions.average(3, 2));
 	}
 
 	@Test
@@ -43,8 +44,9 @@ class TestBadFiles {
 
 	@Test
 	void testIsPalindrome3() {
-		// TODO: make a testcase that YOU know the correct answer to, but the
+		// Done: make a testcase that YOU know the correct answer to, but the
 		// function returns an incorrect result
+		assertEquals("ant",BadFunctions.isPalindrome("Dante"));
 	}
 
 	@Test
@@ -67,6 +69,7 @@ class TestBadFiles {
 	void testNumDigits3() {
 		// TODO: make a testcase that YOU know the correct answer to, but the
 		// function returns an incorrect result
+		assertEquals(1,BadFunctions.numDigits(0));
 	}
 
 	@Test
@@ -91,6 +94,11 @@ class TestBadFiles {
 	void testBubbleSort3() {
 		// TODO: make a testcase that YOU know the correct answer to, but the
 		// function returns an incorrect result
+		int[] nums = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+		int[] correct = Arrays.copyOf(nums, nums.length);
+		BadFunctions.bubbleSort(nums);
+		Arrays.sort(correct);
+		assertEquals(correct,);
 	}
 
 	@Test
@@ -173,5 +181,13 @@ class TestBadFiles {
 	void testSetAddAndRemoveAndContains2() {
 		// TODO: create a situation of add and remove operations that
 		// finds an error in the BadSet data structure
+		BadSet<Integer> myBsi = new BadSet<>();
+		myBsi.add(3);
+		assertTrue(myBsi.contains(3));
+		myBsi.add(2);
+		assertTrue(myBsi.contains(2));
+		assertEquals(2,myBsi.size());
+		myBsi.add(3);
+		assertEquals(2, myBsi.size());
 	}
 }

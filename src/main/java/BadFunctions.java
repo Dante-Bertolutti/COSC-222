@@ -55,7 +55,8 @@ public class BadFunctions {
 	 */
 	public static int average(int a, int b) {
 		return (a+b)/2;
-		// beware! adding two integers is subject to integer overflow 
+		// beware! adding two integers is subject to integer overflow
+
 	}
 
 	/** Determines if the given String s reads backwards as it does forwards
