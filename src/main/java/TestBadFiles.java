@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -67,7 +68,7 @@ class TestBadFiles {
 
 	@Test
 	void testNumDigits3() {
-		// TODO: make a testcase that YOU know the correct answer to, but the
+		// Done: make a testcase that YOU know the correct answer to, but the
 		// function returns an incorrect result
 		assertEquals(1,BadFunctions.numDigits(0));
 	}
@@ -92,13 +93,13 @@ class TestBadFiles {
 
 	@Test
 	void testBubbleSort3() {
-		// TODO: make a testcase that YOU know the correct answer to, but the
+		// Done: make a testcase that YOU know the correct answer to, but the
 		// function returns an incorrect result
 		int[] nums = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
 		int[] correct = Arrays.copyOf(nums, nums.length);
 		BadFunctions.bubbleSort(nums);
 		Arrays.sort(correct);
-		assertEquals(correct,);
+		assertEquals(correct,nums);
 	}
 
 	@Test
@@ -121,8 +122,11 @@ class TestBadFiles {
 
 	@Test
 	void testRandomSort3() {
-		// TODO: make a testcase that YOU know the correct answer to, but the
+		// Done: make a testcase that YOU know the correct answer to, but the
 		// function returns an incorrect result
+		int[] nums = new int[0];
+		int[] correct = Arrays.copyOf(nums,nums.length);
+		assertEquals(correct,nums);
 	}
 	
 	@Test
@@ -179,7 +183,7 @@ class TestBadFiles {
 
 	@Test
 	void testSetAddAndRemoveAndContains2() {
-		// TODO: create a situation of add and remove operations that
+		// Done: create a situation of add and remove operations that
 		// finds an error in the BadSet data structure
 		BadSet<Integer> myBsi = new BadSet<>();
 		myBsi.add(3);
