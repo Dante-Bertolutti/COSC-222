@@ -1,4 +1,7 @@
+//Dante Bertolutti - 300253505
+
 import java.util.ArrayList;
+import java.util.Iterator;
 
 //TODO: 1 "to do" item below
 
@@ -21,7 +24,16 @@ public class SortedBucket<V> implements SortedBucketADT<V>{
 	@Override
 	public void add(Entry<V> t) {
 		// TODO: Implement this method
-		
+		if (b.isEmpty()){
+			b.add(t);
+			return;
+		}
+      	for(int i = 0; i < b.size(); i++){
+			  if (t.getKey() < b.get(i).getKey()){
+				  b.add(i,t);
+				  return;
+			  }
+		}
 		/* HINT: This is the main sorting process. As we insert into a
 		 * bucket the Entry t should be placed in the correct position
 		 * in the bucket. Lowest keys should be at the 'head' of the list.

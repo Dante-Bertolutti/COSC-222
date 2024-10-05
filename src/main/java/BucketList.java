@@ -1,3 +1,5 @@
+//Dante Bertolutti - 300253505
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -22,7 +24,9 @@ public class BucketList<V> implements BucketListADT<V> {
 		list = new ArrayList<SortedBucket<V>>();
 		for (int i=0; i<n; i++){
 			//TODO: instantiate a SortedBucket of <V> type
+			SortedBucket<V> sortedBucket = new SortedBucket<V>();
 			//TODO: add it to our BucketList instance variable "list"
+			list.add(sortedBucket);
 		}
 		this.min = min;
 		this.max = max;
@@ -44,7 +48,11 @@ public class BucketList<V> implements BucketListADT<V> {
 		// outside of the allowed range. If it is too large, just
 		// insert into the last bucket. If it is too small (negative)
 		// then insert item into bucket 0.
-
+		if (indexToInsert >= list.size()) {
+			indexToInsert = list.size() - 1;
+		} else if (indexToInsert < 0) {
+			indexToInsert = 0;
+		}
 		(list.get(indexToInsert)).add(item);
 		
 	}
@@ -69,12 +77,15 @@ public class BucketList<V> implements BucketListADT<V> {
 	 */
 	@Override
 	public ArrayList<Entry<V>> getSortedOrder() {
-		ArrayList<Entry<V>> output = new ArrayList<Entry<V>>();
-
 		//TODO: add the contents of each bucket into the output ArrayList
 		//Hint: our bucket's .getBucketContents() will get the contents
 		//of that bucket in sorted order if they are stored in sorted order
-		
+		ArrayList<Entry<V>> output = new ArrayList<Entry<V>>();
+
+		// Add the contents of each bucket into the output ArrayList
+		for (int i = 0; i < list.size(); i++) {
+			output.addAll(list.get(i).getBucketContents());
+		}
 		return output;
 	}
 	
@@ -87,8 +98,8 @@ public class BucketList<V> implements BucketListADT<V> {
 	public ArrayList<Entry<V>> getBucket(int i) {
 		//TODO: return the (i)th bucket as an arrayList.
 		//Hint: our SortedBucket class has .getBucketContents()
+		return list.get(i).getBucketContents();
 
-		return null; // temporary line
 	}
 	
 	/**
