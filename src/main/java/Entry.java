@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @param <V>
  */
-public class Entry <V> {
+public class Entry <V> implements Comparable<Entry<V>> {
 	private int key;
 	private V val;
 	
@@ -28,7 +28,7 @@ public class Entry <V> {
 		return this.getValue()+"="+this.getKey();
 	}
 
-	//https://hostman.com/tutorials/overriding-the-equals-method-in-java/ got information from here
+	// https://hostman.com/tutorials/overriding-the-equals-method-in-java/ got information from here
 	@Override
 	public int hashCode(){
 		return Objects.hash(key, val);
@@ -40,6 +40,12 @@ public class Entry <V> {
 		}
 		Entry<?> e = (Entry<?>) obj;
 		return e.val.equals(val) && e.key == key;
+	}
+
+	// Got info from here https://stackoverflow.com/questions/21626439/how-to-implement-the-java-comparable-interface
+	@Override
+	public int compareTo(Entry<V> e) {
+		return Integer.compare(this.key, e.key);
 	}
 }
 

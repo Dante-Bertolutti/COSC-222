@@ -1,6 +1,7 @@
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 public class HashingWords {
@@ -16,7 +17,8 @@ public class HashingWords {
 			String s = sc.nextLine();
 			words.add(s);
 		}
-		
+		for (int i = 0; i < words.size(); i++){
+		}
 		sc.close();
 	}
 
