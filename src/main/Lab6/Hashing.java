@@ -15,7 +15,7 @@ public class Hashing {
 		// k=1 to 50. Once you have this one case (of k=31) working, you will
 		// probably want to wrap your code in a for loop for k=1 to 50
 		// Leave these two lines alone for opening the input file
-		FileReader f = new FileReader("englishWords.txt");
+		FileReader f = new FileReader("src/main/Lab6/englishWords.txt");
 		Scanner sc = new Scanner(f);
 
 
@@ -51,7 +51,7 @@ public class Hashing {
 			System.out.println("Maximum Bucket Size: " + maxbucket);
 
 			//Was getting 0 for all the collisions and max bucket sizes after the first k instance
-			sc = new Scanner(new FileReader("englishWords.txt"));
+			sc = new Scanner(new FileReader("src/main/Lab6/englishWords.txt"));
 			// Leave this line alone to close the input file
 			f.close();
 		}
