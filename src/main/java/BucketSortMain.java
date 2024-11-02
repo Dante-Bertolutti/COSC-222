@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
 /*Question 2 BUCKETSORT ANSWER:
-
+	Sarah is correct for a few reasons the first being that creating more buckets is a much easier process than searching through larger buckets on every pass through the algorithm
+	the second is that by having more buckets the algorithm has an easier time allocating a bucket as it does not have to check nearly as many elements per bucket. The buckets are sorted individually
+	and if you have to spend significantly longer sorting each bucket making a new one becomes much more simple and faster.
 */
 
 public class BucketSortMain {
