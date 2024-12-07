@@ -1,48 +1,81 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
-/* This class tests your SuggestAFriend code and also provides the
- * method for reading a graph from a file.
- * 
- * No edits needed here, but you may edit it for your
- * troubleshooting process.
- */
 
 public class TestMain {
 
+	//Dante Bertolutti - 300253505
 	public static void main(String[] args) throws FileNotFoundException {
-		// If your code works, you should be able to run all 4 of
-		// these lines and all queries in one go
-		Graph g1 = readGraph("src/main/java/graph1.txt");
-		Graph g2 = readGraph("src/main/java/graph2.txt");
-		Graph g3 = readGraph("src/main/java/graph3.txt");
-		Graph g4 = readGraph("src/main/java/graph4.txt");
 
-		// This will view the adjacency list of the graph
-		// System.out.println(g);
+		Graph[] g = new Graph[6];
+		g[0] = readGraph("src/main/java/small1");
+		g[1] = readGraph("src/main/java/small2");
+		g[2] = readGraph("src/main/java/medium1");
+		g[3] = readGraph("src/main/java/medium2");
+		g[4] = readGraph("src/main/java/medium3");
+		g[5] = readGraph("src/main/java/medium4");
+		
+		// This will view the adjacency list of a graph
+		System.out.println(g[0]);
+		
+		for (int i=0; i<6; i++)
+			System.out.println(isEulerian(g[i]));
 
+	}
+	
+	private static boolean isEulerian(Graph graph) {
 
-		// Queries
-		System.out.println(SuggestAFriend.suggest(g1, "Logan"));
-		System.out.println(SuggestAFriend.suggest(g1, "Sophia"));
-		System.out.println(SuggestAFriend.suggest(g2, "Thomas"));
-		System.out.println(SuggestAFriend.suggest(g2, "Dylan"));
-		System.out.println(SuggestAFriend.suggest(g3, "Troy"));
-		System.out.println(SuggestAFriend.suggest(g3, "Kendra"));
-		System.out.println(SuggestAFriend.suggest(g4, "Lucy"));
+		//To make it easier I will not submit my graph class I just added a getlist method that returns the adjacency
+		//As expected below
+		//public HashMap<String, ArrayList<String>> getList(){
+		//		return list;
+		//	}
 
-		// g1: suggest(Logan) -> Chloe
-		// g1: suggest(Sophia) -> Mason
-		// g2: suggest(Thomas) -> Dylan
-		// g2: suggest(Dylan) -> Paisley
-		// g3: suggest(Troy) -> Adriel
-		// g3: suggest(Kendra) -> [Olive, Weston]
-		// g4: suggest(Lucy) -> Vanessa	
+		Set<String> visited = new HashSet<>();
+		//Check that all nodes are reachable from a starting node
+		String beginning = graph.getList().keySet().iterator().next();
+
+		dfs(beginning,visited,graph);
+
+		if (visited.size() != graph.getList().keySet().size()){
+			return false;
+		}
+		//Check that the degree of the file is even
+		int odd = 0;
+		for(String node : graph.getList().keySet()){
+			if (graph.degree(node) % 2 != 0){
+				odd++;
+			}
+		}
+		System.out.println("Graph adjacency list:\n" + graph);
+		System.out.println("Visited nodes after DFS: " + visited);
+		System.out.println("Odd degree node count: " + odd);
+
+		//Check that exactly two nodes have an odd degree
+		if (odd == 0){
+			return true;
+		} else if (odd == 2) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private static void dfs(String node, Set<String> visited, Graph graph) {
+		visited.add(node);
+		for (String neighbor : graph.getNbrs(node)) {
+			if (!visited.contains(neighbor)) {
+				dfs(neighbor, visited, graph);
+			}
+		}
 	}
 	/**
 	 * This function reads a list of edges from a given filename
-	 * and returns a Graph of this social network.
+	 * and returns a simple Graph.
+	 * DO NOT EDIT THIS METHOD.
 	 * @param filename
 	 * @return
 	 * @throws FileNotFoundException

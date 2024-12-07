@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class SuggestAFriend {
-
+	//Dante Bertolutti 300253505
 	/**
 	 * Given social network g and name s, returns an ArrayList of all
 	 * the names that this social network would suggest s may know

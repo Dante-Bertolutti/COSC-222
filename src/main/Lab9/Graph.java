@@ -2,12 +2,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-// You might want to edit this class (to allow for repeated edges?)
+// While you DO NOT NEED to edit this class, you might want to add
+// a new function or two.
 
 public class Graph {
 	// This is an adjacency list, implemented as a HashMap. Each vertex
 	// is a String, and attached to each string is a list of other strings
-    private HashMap<String, ArrayList<String>> list = new HashMap<>();
+	private HashMap<String, ArrayList<String>> list = new HashMap<>();
 	
 	/** This creates a new node in the graph with no edges on it.
 	 * If the node already exists, it does nothing.
@@ -57,13 +58,6 @@ public class Graph {
 	public ArrayList<String> getNbrs(String v) {
 		return list.get(v);
 	}
-	
-	/**
-	 * Returns the degree of the given v
-	 */
-	public int degree(String v) {
-		return getNbrs(v).size();
-	}
 
 	/**
 	 * Determines whether the passed in s exists as a node in this graph 
@@ -72,10 +66,4 @@ public class Graph {
 	public boolean containsName(String s) {
 		return list.containsKey(s);
 	}
-
-	public HashMap<String, ArrayList<String>> getList(){
-		return list;
-	}
 }
-
-
